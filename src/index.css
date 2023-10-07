@@ -1,0 +1,24 @@
+*{
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Center the page horizontally */
+body {
+  margin: 0 auto;
+  max-width: 1500px;
+  /* Set the maximum width for your content */
+}
+
+/* Center the page vertically */
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #111d20;
+}
+
