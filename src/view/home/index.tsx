@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { Socket } from 'socket.io-client';
 
 interface HomeProps {
-  username: string;
+  username?: string;
   setUsername: (username: string) => void;
-  room: string;
+  room?: string;
   setRoom: (room: string) => void;
   socket: Socket; // Replace 'Socket' with the actual type of 'socket'
 }
@@ -22,7 +22,7 @@ const validationSchema = Yup.object().shape({
   room: Yup.string().required('Room selection is required'),
 });
 
-const Home = ({ username, setUsername, room, setRoom, socket }:HomeProps) => {
+const Home = ({  setUsername, setRoom, socket }:HomeProps) => {
   const navigate = useNavigate();
 
   const joinRoom = (values:ValueProps) => {
