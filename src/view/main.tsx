@@ -28,8 +28,13 @@ function Main() {
   try {
     // Make an Axios POST request to the endpoint with the form data
     // https://emailtracking.onrender.com/
+    console.log(API_URL)
     const response = await Axios.post(`${API_URL}email/send-email`, values);
+    console.log(response.data)
     if (response.data) {
+      values.body = ''
+      values.recipient = ''
+      values.subject=''
       navigate('/info')
     }
 
