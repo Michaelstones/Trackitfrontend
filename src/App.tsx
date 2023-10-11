@@ -16,6 +16,23 @@ import API_URL from './config';
 
   const socket = io(`${API_URL}`, socketOptions);
 
+
+
+  //  const corsOptions =
+  // process.env.REACT_APP_ENV === 'production'
+  //   ? {
+  //       origin: 'https://incredible-kataifi-203506.netlify.app', // Production origin
+  //       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  //       credentials: true,
+  //       optionsSuccessStatus: 204,
+  //     }
+  //   : {
+  //       origin: 'http://localhost:5173', // Development origin
+  //       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  //       credentials: true,
+  //       optionsSuccessStatus: 204,
+  //     };
+
   function App() {
 
     const [username, setUsername] = useState('');

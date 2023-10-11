@@ -20,7 +20,7 @@ const Messages: React.FC<Props> = ({ socket }) => {
   // Runs whenever a socket event is received from the server
 useEffect(() => {
   const handleReceiveMessage = (data: Message) => {
-    console.log(data);
+    // console.log(data);
     setMessagesReceived((state) => [
       ...state,
       {

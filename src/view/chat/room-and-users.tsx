@@ -21,7 +21,7 @@ const RoomAndUsers: React.FC<Props> = ({ socket, username, room }) => {
 
 useEffect(() => {
   const handleChatroomUsers = (data: User[]) => {
-    console.log(data);
+    // console.log(data);
     setRoomUsers(data);
   };
 

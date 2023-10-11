@@ -10,13 +10,19 @@ interface InfoItem {
   isRead: boolean;
 }
 
+const config = {
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+  }
+};
 function InfoPage() {
   // Define a state variable to store the fetched data
  const [infoData, setInfoData] = useState<InfoItem[]>([]);
 
   useEffect(() => {
     // Make a GET request to fetch data from the server
-    Axios.get(`${API_URL}get-emails`)
+    Axios.get(`${API_URL}get-emails`, config)
       .then((response) => {
         // Handle successful response and store the data in state
         setInfoData(response.data);

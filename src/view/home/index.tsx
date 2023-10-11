@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styles from './styles.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Socket } from 'socket.io-client';
+import axios from 'axios';
 
 interface HomeProps {
   username?: string;
@@ -24,12 +26,23 @@ const validationSchema = Yup.object().shape({
 
 const Home = ({  setUsername, setRoom, socket }:HomeProps) => {
   const navigate = useNavigate();
+  const [ipAddress,setIPAddress] = useState()
+   useEffect(() => {
+    // Fetch the IP address when the component mounts
+    axios.get('https://api.ipify.org/?format=json')
+      .then((response) => {
+        setIPAddress(response.data.ip);
+      })
+      .catch((error) => {
+        console.error('Error fetching IP address:', error);
+      });
+  }, []);
 
   const joinRoom = (values:ValueProps) => {
     const { room, username } = values;
     setRoom(room)
     setUsername(username)
-    socket.emit('join_room', { username, room });
+    socket.emit('join_room', { username, room, ipAddress });
     navigate('/chat', { replace: true });
   };
 
